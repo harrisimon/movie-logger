@@ -1,0 +1,29 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+<div class="container-sm">
+    <form action="/examples" method="POST">
+        <fieldset>
+            <legend>Search for movie</legend>
+            <label class="form-label">Title: </label>
+            <input 
+                type="text" 
+                name="title" 
+                placeholder="enter example title"
+                class="form-control"
+            >
+            {%- comment -%} {% if  movieResult returned%} {%- endcomment -%}
+            {%- comment -%} <label class="form-label">Body:</label>
+            <input 
+                type="text" 
+                name="body" 
+                placeholder="enter example body" 
+                class="form-control"
+            >
+            {%endif%} {%- endcomment -%}
+        </fieldset>
+        <input type="submit" value="Create New Example" class="btn btn-success">
+        {%- comment -%} add a result block after the search {%- endcomment -%}
+        {%- comment -%} add conditionals for showing input boxes eg if result show box else don't show input box for comment{%- endcomment -%}
+    </form>
+</div>
+{% endblock %}
