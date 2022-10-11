@@ -116,7 +116,7 @@ router.post('/new/result', (req, res) => {
 // create -> POST route that actually calls the db and makes a new document
 // post the log with the comment
 router.post('/', (req, res) => {
-	console.log("here", req.body)
+	// console.log("here", req.body)
 	req.body.owner = req.session.userId
 	Log.create(req.body)
 		.then(log => {
@@ -125,6 +125,7 @@ router.post('/', (req, res) => {
 			const imdbId = req.body.imdbID
 			const dateLogged = 'today'
 			const logText = req.body.logText
+			const poster =  req.body.Poster
 	
 			log.comment.push(logText)
 			///////////////////////////////////////////////

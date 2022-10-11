@@ -27,6 +27,10 @@ const LogSchema = new Schema({
     releaseYear: {
         type: String,
         required: true
+    },
+    poster: {
+        type:String,
+        required: true
     }
 })
 
