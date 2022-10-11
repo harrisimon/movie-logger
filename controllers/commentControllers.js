@@ -26,12 +26,12 @@ router.post("/:logId", (req, res) => {
         // do something if it works
         //  --> send a success response status and maybe the comment? maybe the fruit?
         .then(log => {
-            // push the comment into the fruit.comments array
+   
             log.comments.push(req.body)
-            // we need to save the fruit
+
             return log.save()
         })
-        .then(fruit => {
+        .then(log => {
             // res.status(200).json({ fruit: fruit })
             res.redirect(`/logs/${log.id}`)
         })

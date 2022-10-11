@@ -34,22 +34,23 @@ router.get('/', (req, res) => {
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
 			
-			res.render('logs/index', { examples, username, loggedIn })
+			res.render('logs/index', { logs, username, loggedIn })
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
 		})
 })
 
-// index that shows only the user's examples
+// index that shows only the user's logs
 router.get('/mine', (req, res) => {
     // destructure user info from req.session
     const { username, userId, loggedIn } = req.session
 	//////////////////////////////////////////////
 	// add axios to find movie data
+	// axios(`http://www.omdbapi.com/?apikey=764389f4&i=${log.imdbId}`)
 	Log.find({ owner: userId })
-		.then(examples => {
-			res.render('logs/index', { examples, username, loggedIn })
+		.then(logs => {
+			res.render('logs/index', { logs, username, loggedIn })
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -79,7 +80,7 @@ router.post('/new/result', (req, res) => {
 	const { username, userId, loggedIn } = req.session
 	// console.log(req.body)
 	// how to deal with API key??
-	const movie ={}
+	// const movie ={}
 	
 	axios(`http://www.omdbapi.com/?apikey=764389f4&t=${searchTitle}`)
 	.then(result => {
@@ -99,10 +100,10 @@ router.post('/new/result', (req, res) => {
 			director: movieDirector,
 			plot: moviePlot,
 			genre: movieGenre,
-			imdbID: movieImdbId,
+			imdbId: movieImdbId,
 			poster: moviePoster
 		}
-		console.log(movie.poster)
+		// console.log(movie.poster)
 		res.render('logs/new', {movie: movie, username, loggedIn})
 		// return movie
 	})
@@ -115,16 +116,22 @@ router.post('/new/result', (req, res) => {
 // create -> POST route that actually calls the db and makes a new document
 // post the log with the comment
 router.post('/', (req, res) => {
-
+	console.log("here", req.body)
 	req.body.owner = req.session.userId
 	Log.create(req.body)
 		.then(log => {
-
+			const releaseYear = req.body.releaseYear
+			const movieTitle = req.body.Title
+			const imdbId = req.body.imdbID
+			const dateLogged = 'today'
+			const logText = req.body.logText
+	
+			log.comment.push(logText)
 			///////////////////////////////////////////////
 			// add comment and search data to log
 			///////////////////////////////////////
 			console.log('this was returned from create', log)
-			res.redirect('/logs/')
+			res.redirect('/logs/new')
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -166,10 +173,10 @@ router.put('/:id', (req, res) => {
 
 // show route
 router.get('/:id', (req, res) => {
-	const exampleId = req.params.id
+	const logId = req.params.id
 	//////////////////////////////////////////////
 	// add axios to find movie data
-	Log.findById(exampleId)
+	Log.findById(logId)
 		.then(log => {
             const {username, loggedIn, userId} = req.session
 			res.render('logs/show', { log, username, loggedIn, userId })
@@ -181,9 +188,9 @@ router.get('/:id', (req, res) => {
 
 // delete route
 router.delete('/:id', (req, res) => {
-	const exampleId = req.params.id
-	Log.findByIdAndRemove(exampleId)
-		.then(example => {
+	const logId = req.params.id
+	Log.findByIdAndRemove(logId)
+		.then(log => {
 			res.redirect('/logs')
 		})
 		.catch(error => {

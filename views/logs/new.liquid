@@ -14,29 +14,57 @@
 
         </fieldset>
         <input type="submit" value="Search" class="btn btn-success">
-        {%- comment -%} add a result block after the search {%- endcomment -%}
-        {%- comment -%} add conditionals for showing input boxes eg if result show box else don't show input box for comment{%- endcomment -%}
+            {%- comment -%} <h6>Search for a movie</h6> {%- endcomment -%}
+        </form>
         {% if movie.title == null %}
             
         {%else%}  
-        <div class="card">
+        <div class="card" class="movie-info" style="width: 30rem">
+            
+            <img src="{{movie.poster}}" width="300" height="446">
             <h1 class="card-title">{{movie.title}}</h1>
             <h6 class="card-title mb2 text-muted">Directed by {{movie.director}}</h6>
-            <img src="{{movie.poster}}" width="300" height="446">
+            <h6 class="card-title mb2 text-muted"> {{movie.runtime}}</h6>
             <h4></h4>
+            
+
             <p>{{movie.plot}}</p>
-            <legend>Add comment and log</legend>
-            <label class="form-label">Add comment</label>
-            <input
-                type="text"
-                name="logText"
-                placeholder="Enter a comment..."
-                class="form-control"
-                class="logText"
+            <h8 class="card-title mb2 text-muted">{{movie.genre}}</h8>
+            
+            <form action="/logs" method="POST">
+                <legend>Add comment and log</legend>
+                    <label class="form-label input-lg">Add comment</label>
+                    <input
+                        type="text"
+                        name="logText"
+                        placeholder="Enter a comment..."
+                        class="form-control input-lg"
+                        class="logText"
+                        style="height: 15rem;"
+                        >
+                    <input 
+                        name="releaseYear"
+                        value="{{movie.year}}"  
+                        >
+                    <input
+                        name="movieTitle"
+                        value="{{movie.title}}"
+                        >
+                    <input
+                        name="imdbId"
+                        value="{{movie.imdbId}}"
+                        >
+                    <input
+                        name="dateLogged"
+                        value="today"
+                        >
+                <input type="submit" value="Add to log" class="btn btn-success">
+            </form>
         </div>
+        
         {% endif %}
         
         {%- comment -%} ternary result if result if not don't {%- endcomment -%}
-    </form>
+    
 </div>
 {% endblock %}

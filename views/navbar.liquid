@@ -1,7 +1,7 @@
 {% block content %}
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container-fluid">
-        <a href="/" class="navbar-brand">Examplr</a>
+        <a href="/" class="navbar-brand">MovieLogger</a>
         {% if loggedIn %}
         <a href="/logs/mine" class="nav-link text-light">Hello {{ username }} </a>
         {% endif %}
@@ -11,9 +11,9 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             {% if loggedIn %}
                 <a href="/logs" class="nav-link text-light">View All</a>
-                <a href="/logs/new" class="nav-link text-light">New</a>
-                <a href="/logs/mine" class="nav-link text-light">My Examples</a>
-                <a href="/auth/logout" class="nav-link text-light">Log Out</a>
+                <a href="/logs/new" class="nav-link text-light">New Log</a>
+                <a href="/logs/mine" class="nav-link text-light">My Logs</a>
+                <a href="/auth/logout" class="nav-link text-light">Sign Out</a>
             {% else %}
                 <a href="/auth/signup" class="nav-link text-light">Sign Up</a>
                 <a href="/auth/login" class="nav-link text-light">Sign In</a>
