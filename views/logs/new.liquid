@@ -1,29 +1,42 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 <div class="container-sm">
-    <form action="/examples" method="POST">
+    <form action="/logs/new/result" method="POST">
         <fieldset>
             <legend>Search for movie</legend>
             <label class="form-label">Title: </label>
             <input 
                 type="text" 
                 name="title" 
-                placeholder="enter example title"
+                placeholder="enter a movie title"
                 class="form-control"
             >
-            {%- comment -%} {% if  movieResult returned%} {%- endcomment -%}
-            {%- comment -%} <label class="form-label">Body:</label>
-            <input 
-                type="text" 
-                name="body" 
-                placeholder="enter example body" 
-                class="form-control"
-            >
-            {%endif%} {%- endcomment -%}
+
         </fieldset>
-        <input type="submit" value="Create New Example" class="btn btn-success">
+        <input type="submit" value="Search" class="btn btn-success">
         {%- comment -%} add a result block after the search {%- endcomment -%}
         {%- comment -%} add conditionals for showing input boxes eg if result show box else don't show input box for comment{%- endcomment -%}
+        {% if movie.title == null %}
+            
+        {%else%}  
+        <div class="card">
+            <h1 class="card-title">{{movie.title}}</h1>
+            <h6 class="card-title mb2 text-muted">Directed by {{movie.director}}</h6>
+            <img src="{{movie.poster}}" width="300" height="446">
+            <h4></h4>
+            <p>{{movie.plot}}</p>
+            <legend>Add comment and log</legend>
+            <label class="form-label">Add comment</label>
+            <input
+                type="text"
+                name="logText"
+                placeholder="Enter a comment..."
+                class="form-control"
+                class="logText"
+        </div>
+        {% endif %}
+        
+        {%- comment -%} ternary result if result if not don't {%- endcomment -%}
     </form>
 </div>
 {% endblock %}

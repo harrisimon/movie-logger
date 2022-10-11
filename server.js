@@ -15,6 +15,9 @@ const User = require("./models/user")
 // Middleware + App Object  //
 //////////////////////////////
 const app = require("liquid-express-views")(express())
+const bodyParser = require('body-parser')
+const jsonParser = bodyParser.json()
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 middleware(app)
 
@@ -25,6 +28,7 @@ middleware(app)
 app.use('/auth', UserRouter)
 app.use('/logs', LogRouter)
 app.use('/comments', CommentRouter)
+app.use(express.json());
 
 app.get('/', (req, res) => {
     const { username, userId, loggedIn } = req.session
