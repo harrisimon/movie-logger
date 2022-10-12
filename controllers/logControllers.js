@@ -3,6 +3,7 @@ const express = require('express')
 const axios = require('axios')
 const Log = require('../models/log')
 
+
 // Create router
 const router = express.Router()
 
@@ -30,6 +31,7 @@ router.get('/', (req, res) => {
 	//////////////////////////////////////////////
 	// add axios to find movie data
 	Log.find({})
+		.populate("comments.author","username")
 		.then(logs => {
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
@@ -76,11 +78,11 @@ router.get('/new', (req, res) => {
 
 router.post('/new/result', (req, res) => {
 	const searchTitle = req.body.title
-	// console.log("here",search)
+
 	const { username, userId, loggedIn } = req.session
-	// console.log(req.body)
+
 	// how to deal with API key??
-	// const movie ={}
+
 	
 	axios(`http://www.omdbapi.com/?apikey=764389f4&t=${searchTitle}`)
 	.then(result => {
@@ -104,13 +106,9 @@ router.post('/new/result', (req, res) => {
 			imdbId: movieImdbId,
 			poster: moviePoster
 		}
-		// console.log(movie.poster)
 		res.render('logs/new', {movie: movie, username, loggedIn})
 		// return movie
 	})
-	// res.json(result.Title)
-	// re render or redirect with search results
-	// res.json({})
 
 })
 
@@ -118,7 +116,8 @@ router.post('/new/result', (req, res) => {
 // post the log with the comment
 router.post('/', (req, res) => {
 	// console.log("here", req.body)
-	req.body.owner = req.session.userId
+	req.body.author = req.session.userId
+
 	console.log("here",req.body)
 	Log.create(req.body)
 		.then(log => {
@@ -158,13 +157,7 @@ router.put('/:id', (req, res) => {
 
 	Log.findById(logId, req.body)
 		.then(log => {
-
-				console.log("hi")
-				console.log(log)
-				return log.updateOne(req.body)
-
-		
-			// return log.updateOne(req.body)
+			return log.updateOne(req.body)
 		})
 		.then(()=> {
 			res.redirect(`/logs/${logId}`)

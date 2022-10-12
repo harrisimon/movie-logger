@@ -15,7 +15,7 @@
                     {%- comment -%} Body: {{ example.body }} {%- endcomment -%}
                 </p>
                 <p class="card-text">
-                    {%- comment -%} Amount: {{ example.amount }} {%- endcomment -%}
+                    {{log.author}}
                 </p>
                 <a href="/logs/{{ log.id }}" class="btn btn-info">
                     View {{ log.title }}

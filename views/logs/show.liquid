@@ -12,7 +12,7 @@
             {{log.userThoughts}}
             </p>
             <p>{{log.dateLogged}}</p>
-        {% if log.owner == userId %}
+        {% if log.author == userId %}
         <div class="btn-group">
 
             <a href="/logs/{{ log.id }}/edit" class="btn btn-primary">Edit</a>

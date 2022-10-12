@@ -16,8 +16,6 @@ const LogSchema = new Schema({
         type:String,
         required: true
     },
-    // comment: [commentSchema],
-    /// change to date
     dateLogged: {
         type: String,
         required: true
@@ -38,11 +36,13 @@ const LogSchema = new Schema({
         type:String,
         required: true
     },
-    owner: {
+    author: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
-    }
-})
+        ref: 'User',
+        required: true
+    },
+    comments: [commentSchema]
+}, {timestamps: true})
 
 const Log = model('Log', LogSchema)
 

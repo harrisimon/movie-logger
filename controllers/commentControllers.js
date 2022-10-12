@@ -16,19 +16,16 @@ router.post("/:logId", (req, res) => {
     const logId = req.params.fruitId
 
     if (req.session.loggedIn) {
-        // we want to adjust req.body so that the author is automatically assigned
         req.body.author = req.session.userId
     } else {
         res.sendStatus(401)
     }
-    // find a specific fruit
+
     Log.findById(logId)
         // do something if it works
         //  --> send a success response status and maybe the comment? maybe the fruit?
         .then(log => {
-   
             log.comments.push(req.body)
-
             return log.save()
         })
         .then(log => {
