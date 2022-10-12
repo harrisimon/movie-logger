@@ -13,7 +13,7 @@ const router = express.Router()
 ////////////////////////////////////////////
 // POST
 router.post("/:logId", (req, res) => {
-    const logId = req.params.fruitId
+    const logId = req.params.logId
 
     if (req.session.loggedIn) {
         req.body.author = req.session.userId
@@ -22,18 +22,21 @@ router.post("/:logId", (req, res) => {
     }
 
     Log.findById(logId)
-        // do something if it works
-        //  --> send a success response status and maybe the comment? maybe the fruit?
         .then(log => {
+            const note = req.body.note
+            const author = req.body.author
+            const newComment = {
+                note: note,
+                author: author
+            }
+            console.log(req.body)
+            console.log("hi")
             log.comments.push(req.body)
             return log.save()
         })
         .then(log => {
-            // res.status(200).json({ fruit: fruit })
             res.redirect(`/logs/${log.id}`)
         })
-        // do something else if it doesn't work
-        //  --> send some kind of error depending on what went wrong
         .catch(err => res.redirect(`/error?error=${err}`))
 })
 
