@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
 	//////////////////////////////////////////////
 	// add axios to find movie data
 	Log.find({})
-		.then(log => {
+		.then(logs => {
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
 			
@@ -121,25 +121,15 @@ router.post('/', (req, res) => {
 
 	Log.create(req.body)
 		.then(log => {
-			// const releaseYear = req.body.releaseYear
-			// const movieTitle = req.body.Title
-			// const imdbId = req.body.imdbID
-			// const dateLogged = 'today'
 			const logText = req.body.logText
-			// const poster =  req.body.Poster
 
 			const comment = {
 				note: logText,
 				author: req.body.owner
 			}
 			log.comment.push(comment)
-			// console.log(logText)
 			console.log("look here",log)
 			log.save()
-			
-			///////////////////////////////////////////////
-			// add comment and search data to log
-			///////////////////////////////////////
 			console.log('this was returned from create', log)
 			res.redirect('/logs/new')
 		})
@@ -151,12 +141,20 @@ router.post('/', (req, res) => {
 
 // edit route -> GET that takes us to the edit form view
 router.get('/:id/edit', (req, res) => {
-	// we need to get the id
-	//////////////////////////////////////////////
-	// add axios to find movie data
+
 	const logId = req.params.id
 	Log.findById(logId)
 		.then(log => {
+			console.log("here",log.comment[0])
+			// const logText = req.body.logText
+
+			// const comment = {
+			// 	note: logText,
+			// 	author: req.body.owner
+			// }
+			// log.comment.push(comment)
+			// console.log("look here",log)
+			// log.save()
 			res.render('logs/edit', { log })
 		})
 		.catch((error) => {
@@ -169,11 +167,21 @@ router.get('/:id/edit', (req, res) => {
 // update route
 router.put('/:id', (req, res) => {
 	const logId = req.params.id
+		const logText = req.body.logText
 
-	//////////////////////////////////////////////
-	// add axios to find movie data
-	Log.findByIdAndUpdate(logId, req.body, { new: true })
+		const updateComment = {
+			note: logText,
+			author: req.body.owner
+		}
+
+	Log.findById(logId, req.body)
 		.then(log => {
+			log.comment.splice(0,1,updateComment)
+			log.save()
+			console.log("here")
+			return log.updateOne(req.body)
+		})
+		.then(()=> {
 			res.redirect(`/logs/${log.id}`)
 		})
 		.catch((error) => {
@@ -202,7 +210,7 @@ router.delete('/:id', (req, res) => {
 	const logId = req.params.id
 	Log.findByIdAndRemove(logId)
 		.then(log => {
-			res.redirect('/logs')
+			res.redirect('/logs/mine')
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
