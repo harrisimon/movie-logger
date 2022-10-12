@@ -31,6 +31,10 @@ const LogSchema = new Schema({
     poster: {
         type:String,
         required: true
+    },
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
 })
 

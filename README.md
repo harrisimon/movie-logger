@@ -35,16 +35,16 @@ As a user I want to be able to...
 ![ERD Diagram](/Movie%20logger%20ERD.drawio.png "erd diagram")
 
 ### Wireframes
-![screen1](/movie%20logger/movie%20logger.001.jpeg "screen1")
-![screen2](/movie%20logger/movie%20logger.002.jpeg "screen2")
-![screen3](/movie%20logger/movie%20logger.003.jpeg "screen3")
-![screen4](/movie%20logger/movie%20logger.004.jpeg "screen4")
-![screen5](/movie%20logger/movie%20logger.005.jpeg "screen5")
-![screen6](/movie%20logger/movie%20logger.006.jpeg "screen6")
-![screen7](/movie%20logger/movie%20logger.007.jpeg "screen7")
-![screen8](/movie%20logger/movie%20logger.008.jpeg "screen8")
-![screen9](/movie%20logger/movie%20logger.009.jpeg "screen9")
-![screen10](/movie%20logger/movie%20logger.010.jpeg "screen10")
+![screen1](/planning-docs/movie%20logger/movie%20logger.001.jpeg "screen1")
+![screen2](/planning-docs/movie%20logger/movie%20logger.002.jpeg "screen2")
+![screen3](/planning-docs/movie%20logger/movie%20logger.003.jpeg "screen3")
+![screen4](/planning-docs/movie%20logger/movie%20logger.004.jpeg "screen4")
+![screen5](/planning-docs/movie%20logger/movie%20logger.005.jpeg "screen5")
+![screen6](/planning-docs/movie%20logger/movie%20logger.006.jpeg "screen6")
+![screen7](/planning-docs/movie%20logger/movie%20logger.007.jpeg "screen7")
+![screen8](/planning-docs/movie%20logger/movie%20logger.008.jpeg "screen8")
+![screen9](/planning-docs/movie%20logger/movie%20logger.009.jpeg "screen9")
+![screen10](/planning-docs/movie%20logger/movie%20logger.010.jpeg "screen10")
 
 ### Schedule
 * Monday - pseudocode routes, figure out seed data / recommedation data / start recommendation logic

@@ -43,22 +43,27 @@
                         style="height: 15rem;"
                         >
                     <input 
+                        class="hidden"
                         name="releaseYear"
                         value="{{movie.year}}"  
                         >
                     <input
+                        class="hidden"
                         name="movieTitle"
                         value="{{movie.title}}"
                         >
                     <input
+                        class="hidden"
                         name="imdbId"
                         value="{{movie.imdbId}}"
                         >
                     <input
+                        class="hidden"
                         name="dateLogged"
-                        value="today"
+                        value="{{ "now" | date: "%Y-%m-%d" }}"
                         >
                     <input
+                        class="hidden"
                         name="poster"
                         value="{{movie.poster}}"
                         >

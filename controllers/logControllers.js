@@ -118,16 +118,25 @@ router.post('/new/result', (req, res) => {
 router.post('/', (req, res) => {
 	// console.log("here", req.body)
 	req.body.owner = req.session.userId
+
 	Log.create(req.body)
 		.then(log => {
-			const releaseYear = req.body.releaseYear
-			const movieTitle = req.body.Title
-			const imdbId = req.body.imdbID
-			const dateLogged = 'today'
+			// const releaseYear = req.body.releaseYear
+			// const movieTitle = req.body.Title
+			// const imdbId = req.body.imdbID
+			// const dateLogged = 'today'
 			const logText = req.body.logText
-			const poster =  req.body.Poster
-	
-			log.comment.push(logText)
+			// const poster =  req.body.Poster
+
+			const comment = {
+				note: logText,
+				author: req.body.owner
+			}
+			log.comment.push(comment)
+			// console.log(logText)
+			console.log("look here",log)
+			log.save()
+			
 			///////////////////////////////////////////////
 			// add comment and search data to log
 			///////////////////////////////////////
@@ -180,6 +189,7 @@ router.get('/:id', (req, res) => {
 	Log.findById(logId)
 		.then(log => {
             const {username, loggedIn, userId} = req.session
+			console.log(log)
 			res.render('logs/show', { log, username, loggedIn, userId })
 		})
 		.catch((error) => {

@@ -3,15 +3,16 @@
 <div class="container-md">
     <article>
         <h2>
-            {{ log.title }} -
-            {%- comment -%} {% if example.ready %}
-            Ready
-            {% else %}
-            Not Ready
-            {%endif%} {%- endcomment -%}
+            {{ log.movieTitle }} 
+
         </h2>
-        {%- comment -%} <h3>Amount: {{ example.amount }}</h3>
-        <h6>Body: {{ example.body }}</h6> {%- endcomment -%}
+           <img src="{{ log.poster}}" alt="a poster for the movie {{log.movieTitle}}">
+           {{ log.releaseYear }}
+           <p>
+            {%for item in log.comment%}
+                {{item.note}}
+            {%endfor%}
+            </p>
         {% if log.owner == userId %}
         <div class="btn-group">
 
