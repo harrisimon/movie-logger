@@ -48,7 +48,7 @@ router.delete('/delete/:logId/:commId', (req, res) => {
     const logId = req.params.logId 
     const commId = req.params.commId
     // get the fruit
-    Fruit.findById(logId)
+    Log.findById(logId)
         .then(log => {
             // get the comment
             // subdocs have a built in method that you can use to access specific subdocuments when you need to.
@@ -59,13 +59,9 @@ router.delete('/delete/:logId/:commId', (req, res) => {
             if (req.session.loggedIn) {
                 // only let the author of the comment delete it
                 if (comment.author == req.session.userId) {
-                    // find some way to remove the comment
-                    // here's another built in method
                     comment.remove()
-                    comment.save()
+                    log.save()
                     res.redirect(`/logs/${log.id}`)
-                    // return the saved fruit
-                    // return fruit.save()
                 } else {
                     const err = 'you%20are%20not%20authorized%20for%20this%20action'
                     res.redirect(`/error?error=${err}`)
