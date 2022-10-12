@@ -92,6 +92,7 @@ router.post('/new/result', (req, res) => {
 		const movieGenre = result.data.Genre
 		const movieImdbId = result.data.imdbID
 		const moviePoster = result.data.Poster
+		
 
 		const movie = {
 			title: movieTitle,
@@ -118,19 +119,9 @@ router.post('/new/result', (req, res) => {
 router.post('/', (req, res) => {
 	// console.log("here", req.body)
 	req.body.owner = req.session.userId
-
+	console.log("here",req.body)
 	Log.create(req.body)
 		.then(log => {
-			const logText = req.body.logText
-
-			const comment = {
-				note: logText,
-				author: req.body.owner
-			}
-			log.comment.push(comment)
-			console.log("look here",log)
-			log.save()
-			console.log('this was returned from create', log)
 			res.redirect('/logs/new')
 		})
 		.catch(error => {
@@ -142,20 +133,15 @@ router.post('/', (req, res) => {
 // edit route -> GET that takes us to the edit form view
 router.get('/:id/edit', (req, res) => {
 
+	const username = req.session.username
+    const loggedIn = req.session.loggedIn
+    const userId = req.session.userId
 	const logId = req.params.id
+
 	Log.findById(logId)
 		.then(log => {
-			console.log("here",log.comment[0])
-			// const logText = req.body.logText
 
-			// const comment = {
-			// 	note: logText,
-			// 	author: req.body.owner
-			// }
-			// log.comment.push(comment)
-			// console.log("look here",log)
-			// log.save()
-			res.render('logs/edit', { log })
+			res.render('logs/edit', { log, username, loggedIn, userId })
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
@@ -168,21 +154,20 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
 	const logId = req.params.id
 		const logText = req.body.logText
-
-		const updateComment = {
-			note: logText,
-			author: req.body.owner
-		}
+		req.body.author = req.session.userId
 
 	Log.findById(logId, req.body)
 		.then(log => {
-			log.comment.splice(0,1,updateComment)
-			log.save()
-			console.log("here")
-			return log.updateOne(req.body)
+
+				console.log("hi")
+				console.log(log)
+				return log.updateOne(req.body)
+
+		
+			// return log.updateOne(req.body)
 		})
 		.then(()=> {
-			res.redirect(`/logs/${log.id}`)
+			res.redirect(`/logs/${logId}`)
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)

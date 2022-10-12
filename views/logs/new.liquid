@@ -33,15 +33,11 @@
             
             <form action="/logs" method="POST">
                 <legend>Add comment and log</legend>
-                    <label class="form-label input-lg">Add comment</label>
-                    <input
-                        type="text"
-                        name="logText"
-                        placeholder="Enter a comment..."
-                        class="form-control input-lg"
-                        class="logText"
-                        style="height: 15rem;"
-                        >
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Review</span>
+                        </div>
+                    <textarea name="userThoughts" class="form-control" aria-label="With textarea"> 
+                    </textarea>
                     <input 
                         class="hidden"
                         name="releaseYear"

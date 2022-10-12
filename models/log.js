@@ -11,7 +11,13 @@ const commentSchema = require('./comment')
 const {Schema, model} = mongoose
 
 const LogSchema = new Schema({
-    comment: [commentSchema],
+    //change to user thoughts / review
+    userThoughts : {
+        type:String,
+        required: true
+    },
+    // comment: [commentSchema],
+    /// change to date
     dateLogged: {
         type: String,
         required: true

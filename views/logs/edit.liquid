@@ -10,17 +10,11 @@
            <img src="{{ log.poster}}" alt="a poster for the movie {{log.movieTitle}}">
            {{ log.releaseYear }}
         <fieldset>
-                            <input
-                        type="text"
-                        name="logText"
-                        placeholder="Enter a comment..."
-                        class="form-control input-lg"
-                        class="logText"
-                        style="height: 15rem;"
-            {%for item in log.comment%}
-                value="{{item.note}}"
-            {%endfor%}
-                        >
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Review</span>
+                        </div>
+                    <textarea name="userThoughts" class="form-control" aria-label="With textarea" value="{{log.userThoughts}}"> 
+                    </textarea>
                     <input 
                         class="hidden"
                         name="releaseYear"
@@ -47,7 +41,7 @@
                         value="{{log.poster}}"
                         >
                                 </fieldset>
-        <input type="submit" value="Edit Example" class="btn btn-success">
+        <input type="submit" value="Edit {{log.movieTitle}} Review" class="btn btn-success">
     </form>
 </div>
 {% endblock %}
