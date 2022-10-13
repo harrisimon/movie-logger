@@ -121,7 +121,7 @@ router.post('/', (req, res) => {
 	console.log("here",req.body)
 	Log.create(req.body)
 		.then(log => {
-			res.redirect('/logs/new')
+			res.redirect('/logs')
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
