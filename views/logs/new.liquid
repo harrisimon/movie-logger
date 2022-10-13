@@ -1,7 +1,7 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 <div class="container-sm">
-    <form action="/logs/new/result" method="POST" class="input-group">
+    <form id="seach-box" action="/logs/new/result" method="POST" class="input-group">
             <legend>Search for movie</legend>
 
             <input
@@ -23,15 +23,15 @@
             <h1 class="card-title">{{movie.title}}</h1>
             <h6 class="card-title mb2">Directed by {{movie.director}}</h6>
             <h6 class="card-title mb2"> {{movie.runtime}}</h6>
-            <p>{{movie.plot}}</p>
-            <h8 class="card-title mb2 text-muted">{{movie.genre}}</h8>
+            <p id="plot">{{movie.plot}}</p>
+            <h8 class="card-title mb2">{{movie.genre}}</h8>
             
             <form action="/logs" method="POST">
                 <legend>Add comment and log</legend>
                         <div class="input-group-prepend">
                             <span class="input-group-text">Review</span>
                         </div>
-                    <textarea name="userThoughts" class="form-control" aria-label="With textarea"></textarea>
+                    <textarea id="review-box" name="userThoughts" class="form-control" aria-label="With textarea"></textarea>
                     <input 
                         class="hidden"
                         name="releaseYear"

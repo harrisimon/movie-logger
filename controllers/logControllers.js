@@ -30,7 +30,7 @@ router.use((req, res, next) => {
 router.get('/', (req, res) => {
 
 	Log.find({})
-		// .populate("log.author", "username")
+		.populate("author", "username")
 		.then(logs => {
 
 			const username = req.session.username
@@ -85,7 +85,7 @@ router.post('/new/result', (req, res) => {
 	// how to deal with API key??
 
 	
-	axios(`http://www.omdbapi.com/?apikey=764389f4&t=${searchTitle}`)
+	axios(`http://www.omdbapi.com/?apikey=764389f4&t=${searchTitle}&plot=full`)
 	.then(result => {
 		const movieTitle = result.data.Title
 		const movieYear = result.data.Year
@@ -96,7 +96,6 @@ router.post('/new/result', (req, res) => {
 		const movieImdbId = result.data.imdbID
 		const moviePoster = result.data.Poster
 		
-
 		const movie = {
 			title: movieTitle,
 			year: movieYear,

@@ -4,12 +4,17 @@
 
     {%if%}
     {{log.author == userId}}
-        <h2 class="display-6">{{log.author}}'s Logs</h2>
+        <h2 class="display-6">{{log.author.username}}'s Logs</h2>
     {%else%}
-    <h2 class="display-6">All Logs</h2>
+    <div id="logger-welcome-icon">
+        <img src={{"../imgs/movieloggericon.png"}} id="logger-welcome-icon">
+
+    </div>
+
 
 
     {%endif%}
+    <div class="all-cards">
 
     <div class="row">
         {% for log in logs %}
@@ -19,7 +24,7 @@
 
                 <img src="{{log.poster}}" width="250px" height="372px" class="view-all-card">
                 <p class="card-text">
-                    {{log.author}}
+                    Reviewd by {{log.author.username}}
                 </p>
                 <a href="/logs/{{ log.id }}" class="btn btn-info">
                     View {{ log.title }}
@@ -27,6 +32,7 @@
             </div>
         </div>
         {% endfor %}
+    </div>
     </div>
 </div>
 {% endblock %}

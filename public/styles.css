@@ -6,37 +6,72 @@ body {
 .logText {
     height: 300px;
 }
+form {
+    width: auto;
+}
 .movie-info {
     width: 400px;
+}
+#search-box {
+    width: 30rem;
+}
+#review-box{
+    width: 25rem;
+}
+#logger-welcome-icon {
+    display: flex;
+    height: 15rem;
+    margin: 5px;
+    justify-content: center;
 }
 .hidden {
     display:none;
 }
+#plot{
+    margin:10px;
+}
 .navbar{
     background-color: #22577a;
+}
+.all-cards{
+    margin: 45px;
 }
 .card{
     display:flex;
     justify-content: center;
     margin: 4px;
     background-color: #38A3A5;
+    align-items: center;
 }
 #result-poster {
     display: flex;
     justify-content: center;
 }
+
 .card-body {
     margin: 4px;
     background-color: #38A3A5;
-    color: white;
+    color: #C7F9CC;
 }
-.card-text,.card-header{
-    color:white;
+.card-text{
+    color: #C7F9CC;
+}
+.card-header{
+    color: #C7F9CC;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
 }
 #movie-info-show{
     background-color: #22577a;
-    color: white;
-    border-radius: 9px;
+    color: #C7F9CC;
+    margin: auto 0;
+}
+.col-md-4 {
+    margin: auto;
+}
+.col-md-8 {
+    margin:  0;
 }
 .view-all-card {
     display: flex;
@@ -45,7 +80,7 @@ body {
 }
 .btn-info {
     background-color: #22577a;
-    color: white;
+    color: #C7F9CC;
 }
 .logger-welcome{
     display: flex;
