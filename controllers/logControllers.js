@@ -30,7 +30,7 @@ router.use((req, res, next) => {
 router.get('/', (req, res) => {
 
 	Log.find({})
-		// .populate("comments.author", "username")
+		// .populate("log.author", "username")
 		.then(logs => {
 
 			const username = req.session.username

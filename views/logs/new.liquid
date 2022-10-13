@@ -1,33 +1,28 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 <div class="container-sm">
-    <form action="/logs/new/result" method="POST">
-        <fieldset>
+    <form action="/logs/new/result" method="POST" class="input-group">
             <legend>Search for movie</legend>
-            <label class="form-label">Title: </label>
-            <input 
+
+            <input
+ 
                 type="text" 
                 name="title" 
-                placeholder="enter a movie title"
-                class="form-control"
+                placeholder=" Enter a movie title"
+                class="search-box"
             >
 
-        </fieldset>
         <input type="submit" value="Search" class="btn btn-success">
-            {%- comment -%} <h6>Search for a movie</h6> {%- endcomment -%}
         </form>
         {% if movie.title == null %}
             
         {%else%}  
         <div class="card" class="movie-info" style="width: 30rem">
             
-            <img src="{{movie.poster}}" width="300" height="446">
+            <img src="{{movie.poster}}" width="300" height="446" id="result-poster">
             <h1 class="card-title">{{movie.title}}</h1>
-            <h6 class="card-title mb2 text-muted">Directed by {{movie.director}}</h6>
-            <h6 class="card-title mb2 text-muted"> {{movie.runtime}}</h6>
-            <h4></h4>
-            
-
+            <h6 class="card-title mb2">Directed by {{movie.director}}</h6>
+            <h6 class="card-title mb2"> {{movie.runtime}}</h6>
             <p>{{movie.plot}}</p>
             <h8 class="card-title mb2 text-muted">{{movie.genre}}</h8>
             

@@ -6,7 +6,7 @@ body {
 .logText {
     height: 300px;
 }
-.movieInfo {
+.movie-info {
     width: 400px;
 }
 .hidden {
@@ -16,12 +16,16 @@ body {
     background-color: #22577a;
 }
 .card{
-    display: flex;
+    display:flex;
+    justify-content: center;
     margin: 4px;
     background-color: #38A3A5;
+}
+#result-poster {
+    display: flex;
     justify-content: center;
 }
-.cardbody {
+.card-body {
     margin: 4px;
     background-color: #38A3A5;
     color: white;
@@ -29,7 +33,11 @@ body {
 .card-text,.card-header{
     color:white;
 }
-
+#movie-info-show{
+    background-color: #22577a;
+    color: white;
+    border-radius: 9px;
+}
 .view-all-card {
     display: flex;
     justify-content: center;
@@ -68,7 +76,12 @@ body {
     border-top-right-radius: 0;
   border-bottom-left-radius: calc(0.25rem - 1px);
 }
-/* .show-card-body {
-    display:flex;
-} */
+.search-box{
+    width: 50%;
+}
+img{
+    margin:0;
+    max-width: 100%;
+    height: auto;
+}
 

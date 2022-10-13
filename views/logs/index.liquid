@@ -1,6 +1,7 @@
 {% layout 'layout.liquid'%}
 {% block content %}
 <div class="index-page">
+
     {%if%}
     {{log.author == userId}}
         <h2 class="display-6">{{log.author}}'s Logs</h2>
@@ -9,6 +10,7 @@
 
 
     {%endif%}
+
     <div class="row">
         {% for log in logs %}
         <div class="card" style="width: 350px;">
