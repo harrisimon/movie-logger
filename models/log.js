@@ -36,6 +36,18 @@ const LogSchema = new Schema({
         type:String,
         required: true
     },
+    director: {
+        type:String,
+        required: true
+    },
+    plot: {
+        type:String,
+        required: true
+    },
+    genre: {
+        type:String,
+        required: true
+    },
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User',

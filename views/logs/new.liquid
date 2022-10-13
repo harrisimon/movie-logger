@@ -62,14 +62,25 @@
                         name="poster"
                         value="{{movie.poster}}"
                         >
-
+                    <input
+                        class="hidden"
+                        name="plot"
+                        value="{{movie.plot}}"
+                        >
+                    <input
+                        class="hidden"
+                        name="director"
+                        value="{{movie.director}}"
+                        >
+                    <input
+                        class="hidden"
+                        name="genre"
+                        value="{{movie.genre}}"
+                        >                        
                 <input type="submit" value="Add to log" class="btn btn-success">
             </form>
-        </div>
-        
+        </div>  
         {% endif %}
         
-        {%- comment -%} ternary result if result if not don't {%- endcomment -%}
-    
 </div>
 {% endblock %}

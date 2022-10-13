@@ -1,54 +1,64 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-<div class="container-md">
+  <div class="container-md">
     <article>
-        <h2>
-            {{ log.movieTitle }} 
 
-        </h2>
-           <img src="{{ log.poster}}" alt="a poster for the movie {{log.movieTitle}}">
-           {{ log.releaseYear }}
-           <p>
-            {{log.userThoughts}}
-            </p>
-            <p>{{log.dateLogged}}</p>
-        {% if log.author == userId %}
-        <div class="btn-group">
 
-            <a href="/logs/{{ log.id }}/edit" class="btn btn-primary">Edit</a>
-            <form action="/logs/{{ log.id }}?_method=DELETE" method="POST">
-                <input type="submit" value="Delete" class="btn btn-danger">
-            </form>
+    <div class="card mb-3" style="max-width: 60rem;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="{{ log.poster}}" alt="a poster for the movie {{log.movieTitle}}">
+            </div>
+            <div class="col-md-8">
+            <div class="card-body">
+                <h2 class="card-title">{{ log.movieTitle }}<h5>Directed by {{log.director}}</h5> <h6>{{ log.releaseYear }}</h6></h2>
+                <p class="card-text">{{log.plot}}</p>
+                <p class="card-text"><small class="text-muted">{{log.dateLogged}}</small></p>
+            </div>
+            <div class="card-body" class="user-thoughts">
+                {{log.userThoughts}}
+            </div>
+            {% if log.author == userId %}
+                    <div class="btn-group">
+
+                    <a href="/logs/{{ log.id }}/edit" class="btn btn-primary">Edit</a>
+                    <form action="/logs/{{ log.id }}?_method=DELETE" method="POST">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </form>
+                    </div>
+                {% endif %}
+            </div>
         </div>
-        {% endif %}
-        {% if loggedIn %}
-            <div class="col-md-6">
-                <form action="/comments/{{log.id}}" method="POST">
-                    <fieldset>
-                        <legend>Add Comment</legend>
-                        <label class="form-label">comment:</label>
-                        <input class="form-control mb-1" type="text" placeholder="enter your comment..." name="note" required>
-                    </fieldset>
-                    <input class="btn btn-success" type="submit" value="add comment">
-                </form>
-            </div>
-        {% else %}
-            <div class="col-md-6">
-                <small>If you'd like to leave a comment, please log in...</small>
-            </div>
-        {% endif %}
-        <hr>
-        {% if log.comments.length > 0%}
-            <div class="container-sm justify-content-center">
-                <div class="col-md-8 col-lg-6">
-                    {% for comment in log.comments %}
-                        {% render '../comment.liquid', comment: comment, userId: userId, log: log %}
-                    {% endfor %}
-                </div>
-            </div>
-        {% else %}
-            <small>no comments yet...</small>
-        {% endif %}
+    </div>
+
+      {% if loggedIn %}
+        <div class="col-md-6">
+          <form action="/comments/{{log.id}}" method="POST">
+            <fieldset>
+              <legend>Add Comment</legend>
+              <label class="form-label">comment:</label>
+              <input class="form-control mb-1" type="text" placeholder="enter your comment..." name="note" required>
+            </fieldset>
+            <input class="btn btn-success" type="submit" value="add comment">
+          </form>
+        </div>
+      {% else %}
+        <div class="col-md-6">
+          <small>If you'd like to leave a comment, please log in...</small>
+        </div>
+      {% endif %}
+      <hr>
+      {% if log.comments.length > 0%}
+        <div class="container-sm justify-content-center">
+          <div class="col-md-8 col-lg-6">
+            {% for comment in log.comments %}
+              {% render '../comment.liquid', comment: comment, userId: userId, log: log %}
+            {% endfor %}
+          </div>
+        </div>
+      {% else %}
+        <small>no comments yet...</small>
+      {% endif %}
     </article>
-</div>
-{% endblock %}
+  </div>
+{% endblock %}}

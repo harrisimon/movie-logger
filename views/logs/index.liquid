@@ -1,19 +1,21 @@
 {% layout 'layout.liquid'%}
 {% block content %}
-<div>
+<div class="index-page">
+    {%if%}
+    {{log.author == userId}}
+        <h2 class="display-6">{{log.author}}'s Logs</h2>
+    {%else%}
     <h2 class="display-6">All Logs</h2>
+
+
+    {%endif%}
     <div class="row">
         {% for log in logs %}
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 350px;">
             <h5 class="card-header">{{ log.movieTitle }}</h5>
             <div class="card-body">
-                <h5 class="card-title">
-                    {%- comment -%} Ready?: {{ example.ready }} {%- endcomment -%}
-                </h5>
-                <img src="{{log.poster}}" width="300" height="446">
-                <p class="card-text">
-                    {%- comment -%} Body: {{ example.body }} {%- endcomment -%}
-                </p>
+
+                <img src="{{log.poster}}" width="250px" height="372px" class="view-all-card">
                 <p class="card-text">
                     {{log.author}}
                 </p>

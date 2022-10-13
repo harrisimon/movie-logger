@@ -1,9 +1,12 @@
 {% layout "layout.liquid" %}
 {% block content %}
 
-    <h1>Welcome!</h1>
-    <div class="logger-icon">
-        <img src={{"../imgs/movieloggericon.png"}}>
+    <div class="logger-welcome">
+        <img src={{"../imgs/movieloggericon.png"}} height="330px">
     </div>
-
+    <h1 class="logger-welcome">Review and <br> discuss movies!</h1>
+                <a href="/auth/login" class="nav-link text-light">Sign In</a>
+    <small class="logger-welcome">Sign In to review</small>
+    <div>Review</div>
+    <div>Find a movie</div>
 {% endblock %}

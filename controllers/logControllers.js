@@ -28,13 +28,14 @@ router.use((req, res, next) => {
 
 // index ALL
 router.get('/', (req, res) => {
-	//////////////////////////////////////////////
-	// add axios to find movie data
+
 	Log.find({})
-		.populate("comments.author","username")
+		// .populate("comments.author", "username")
 		.then(logs => {
+
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
+		
 			
 			res.render('logs/index', { logs, username, loggedIn })
 		})
@@ -50,7 +51,7 @@ router.get('/mine', (req, res) => {
 	//////////////////////////////////////////////
 	// add axios to find movie data
 	// axios(`http://www.omdbapi.com/?apikey=764389f4&i=${log.imdbId}`)
-	Log.find({ owner: userId })
+	Log.find({ author: userId })
 		.then(logs => {
 			res.render('logs/index', { logs, username, loggedIn })
 		})
@@ -104,7 +105,8 @@ router.post('/new/result', (req, res) => {
 			plot: moviePlot,
 			genre: movieGenre,
 			imdbId: movieImdbId,
-			poster: moviePoster
+			poster: moviePoster,
+
 		}
 		res.render('logs/new', {movie: movie, username, loggedIn})
 		// return movie
@@ -173,6 +175,7 @@ router.get('/:id', (req, res) => {
 	//////////////////////////////////////////////
 	// add axios to find movie data
 	Log.findById(logId)
+		.populate("comments.author", "username")
 		.then(log => {
             const {username, loggedIn, userId} = req.session
 			console.log(log)

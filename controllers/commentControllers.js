@@ -23,14 +23,7 @@ router.post("/:logId", (req, res) => {
 
     Log.findById(logId)
         .then(log => {
-            const note = req.body.note
-            const author = req.body.author
-            const newComment = {
-                note: note,
-                author: author
-            }
-            console.log(req.body)
-            console.log("hi")
+
             log.comments.push(req.body)
             return log.save()
         })
