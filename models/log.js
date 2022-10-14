@@ -1,9 +1,4 @@
-//////////////////////////////////////////////////////////////////
-// Our schema and model for the fruit resource
-/////////////////////////////////////////////////////////////////
-
-/// this is the old mongoose export
-// const mongoose = require("mongoose") // import mongoose
+////////////////////IMPORTS//////////////////
 const mongoose = require('./connection')
 const User = require('./user')
 const commentSchema = require('./comment')

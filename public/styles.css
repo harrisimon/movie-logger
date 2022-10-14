@@ -18,6 +18,7 @@ form {
 #review-box{
     width: 25rem;
 }
+
 #logger-welcome-icon {
     display: flex;
     height: 15rem;
@@ -52,6 +53,7 @@ form {
     margin: 4px;
     background-color: #38A3A5;
     color: #C7F9CC;
+    width: 100%;
 }
 .card-text{
     color: #C7F9CC;
@@ -119,4 +121,3 @@ img{
     max-width: 100%;
     height: auto;
 }
-

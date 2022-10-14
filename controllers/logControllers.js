@@ -52,6 +52,7 @@ router.get('/mine', (req, res) => {
 	// add axios to find movie data
 	// axios(`http://www.omdbapi.com/?apikey=764389f4&i=${log.imdbId}`)
 	Log.find({ author: userId })
+		.populate('author', 'username')
 		.then(logs => {
 			res.render('logs/index', { logs, username, loggedIn })
 		})

@@ -27,9 +27,9 @@
             <h8 class="card-title mb2">{{movie.genre}}</h8>
             
             <form action="/logs" method="POST">
-                <legend>Add comment and log</legend>
+                {%- comment -%} <legend>Add comment and log</legend> {%- endcomment -%}
                         <div class="input-group-prepend">
-                            <span class="input-group-text">Review</span>
+                            <span class="input-group-text">Write your review</span>
                         </div>
                     <textarea id="review-box" name="userThoughts" class="form-control" aria-label="With textarea"></textarea>
                     <input 

@@ -3,8 +3,8 @@
 <div class="index-page">
 
     {%if%}
-    {{log.author == userId}}
-        <h2 class="display-6">{{log.author.username}}'s Logs</h2>
+    {{session.userId == log.author}}
+        <h2 class="display-6">{{username}}'s Logs</h2>
     {%else%}
     <div id="logger-welcome-icon">
         <img src={{"../imgs/movieloggericon.png"}} id="logger-welcome-icon">
