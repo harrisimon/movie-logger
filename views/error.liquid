@@ -2,7 +2,8 @@
 {% block content %}
 
 {%if error == 'ValidationError: userThoughts: Path `userThoughts` is required.'%}
-<h1>Please enter a review to log a movie</h1>
+<h1>Please enter a <a href="javascript:history.back()">review</a> to log a movie</h1>
+
 {%else%}
 <h1 class="error">{{error}}</h1>
 {%endif%}

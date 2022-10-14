@@ -176,6 +176,7 @@ router.get('/:id', (req, res) => {
 	// add axios to find movie data
 	Log.findById(logId)
 		.populate("comments.author", "username")
+		.populate("author", "username")
 		.then(log => {
             const {username, loggedIn, userId} = req.session
 			console.log(log)

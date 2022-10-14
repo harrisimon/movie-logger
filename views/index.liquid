@@ -1,12 +1,22 @@
 {% layout "layout.liquid" %}
 {% block content %}
+{%- comment -%} <div style="position: fixed; z-index: -99; width: 100%; height: 100%">
+  <iframe
+    frameborder="0"
+    height="100%"
+    width="100%"
+    src="https://www.youtube.com/embed/9EnSzMDCSKw?controls=0autoplay=1&controls=0&showinfo=0&autohide=1"
+  >
+  </iframe>
+</div> {%- endcomment -%}
+
 
     <div class="logger-welcome">
         <img src={{"../imgs/movieloggericon.png"}} style="height:30rem">
     </div>
     <h1 class="logger-welcome">Review and <br> discuss movies!</h1>
-                <a href="/auth/login" class="nav-link text-light">Sign In</a>
-    <small class="logger-welcome">Sign In to review</small>
-    <div>Review</div>
-    <div>Find a movie</div>
+    <h6 class="logger-welcome"><a href="/auth/login" class="btn btn-primary">Sign In to review</a> </h6>
+    <h6 class="logger-welcome"><a href="/auth/signup" class="btn btn-primary">Sign Up</a> </h6>
+
+
 {% endblock %}

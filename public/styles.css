@@ -19,6 +19,7 @@ form {
     width: 25rem;
 }
 
+
 #logger-welcome-icon {
     display: flex;
     height: 15rem;
@@ -31,9 +32,7 @@ form {
 #plot{
     margin:10px;
 }
-.navbar{
-    background-color: #22577a;
-}
+
 .all-cards{
     margin: 45px;
 }
@@ -53,7 +52,7 @@ form {
     margin: 4px;
     background-color: #38A3A5;
     color: #C7F9CC;
-    width: 100%;
+    width: auto;
 }
 .card-text{
     color: #C7F9CC;
@@ -92,12 +91,7 @@ form {
     font-weight:bolder;
     margin:12px;
 }
-.navbar-dark {
-    background-color: #22577a;
-}
-.bg-dark {
-    background-color: #22577a;
-}
+
 .index-page {
     display: grid;
     column-gap: 30px;
@@ -121,3 +115,17 @@ img{
     max-width: 100%;
     height: auto;
 }
+.video-container{
+    width: 100vw;
+    height: 100vh;
+    z-index: -3;
+  }
+      
+  iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+  }
