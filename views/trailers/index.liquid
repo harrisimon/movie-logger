@@ -2,6 +2,9 @@
 {% block content %}
 
 <h1>hi</h1>
-{{result}}
+<a href="https://www.youtube.com/watch?v={{key}}">Trailer</a>
 
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/{{key}}?&autoplay=1&rel=0&controls=0&modestbranding"frameborder="0" 
+allowfullscreen></iframe>
 {% endblock %}

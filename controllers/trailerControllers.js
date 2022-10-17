@@ -44,13 +44,29 @@ router.get('/:id', (req, res) => {
             const userId = req.session.userId
             axios(`https://api.themoviedb.org/3/find/${log}?api_key=a0900a4fc790e96b93869d26be959346&language=en-US&external_source=imdb_id`)
             .then(result => {
-                console.log(result)
+                // console.log(result)
                 // res.render('trailers/index', {result, username, loggedIn, userId})
-                res.json(result.data.movie_results)
+                const tmdbId = result.data.movie_results[0].id
+                axios(`https://api.themoviedb.org/3/movie/${tmdbId}/videos?api_key=a0900a4fc790e96b93869d26be959346&language=en-US`)
+                // res.json(result.data.movie_results[0].id)
+                    .then(result => {
+                        console.log(result.data.results[0].key)
+                        const key = result.data.results[0].key
+                        res.render('trailers/index', {key, username, loggedIn, userId})
+                    })
+                    .catch(error => {
+                        res.redirect(`/error?error=${error}`)
+                    })
             })
-        }
+            .catch(error => {
+                res.redirect(`/error?error=${error}`)
+            })
+        })
+        .catch(error => {
+            res.redirect(`/error?error=${error}`)
+        })
 
-        )
+        
     // axios(`https://api.themoviedb.org/3/find/${imdbId}?api_key=a0900a4fc790e96b93869d26be959346&language=en-US&external_source=imdb_id`)
     //     .then(
             
