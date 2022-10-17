@@ -1,10 +1,20 @@
 {% block content %}
-    <div class="card mb-4 shadow">
-        <div class="card-body">
+
+    <div class="card mb-4 shadow" class="comment-card">
+        {% if author.username == comment.author %}
+            hi
+        {%else%}
+            {%- comment -%} bye {%- endcomment -%}
+        {% endif %}
+        <div class="comment-card-body" >
             <p>{{ comment.note }}</p>
             <div class="d-flex justify-content-between">
                 <small>Posted by: {{ comment.author.username}}</small>
+                <div class="comment-spacer">
+                    
+                </div>
                 {% if comment.author == userId %}
+                
                     <form action="/comments/delete/{{log.id}}/{{comment.id}}?_method=DELETE" method="POST">
                         <input class="btn btn-danger" type="submit" value="X">
                     </form>

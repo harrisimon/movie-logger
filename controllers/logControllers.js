@@ -73,20 +73,14 @@ router.get('/new', (req, res) => {
 
 })
 
-////////////////////////////////////////////////
-// create a seperate route for my search??? use result.liquid to show
-// axios returns the result into variable with info
-////////////////////////////////////////////////////
 
 router.post('/new/result', (req, res) => {
 	const searchTitle = req.body.title
-
 	const { username, userId, loggedIn } = req.session
 
 	// how to deal with API key??
-
 	
-	axios(`http://www.omdbapi.com/?apikey=764389f4&t=${searchTitle}&plot=full`)
+	axios(`http://www.omdbapi.com/?apikey=${process.env.API_KEY}4&t=${searchTitle}&plot=full`)
 	.then(result => {
 		const movieTitle = result.data.Title
 		const movieYear = result.data.Year
@@ -96,7 +90,7 @@ router.post('/new/result', (req, res) => {
 		const movieGenre = result.data.Genre
 		const movieImdbId = result.data.imdbID
 		const moviePoster = result.data.Poster
-		
+		console.log(result)
 		const movie = {
 			title: movieTitle,
 			year: movieYear,

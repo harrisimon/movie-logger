@@ -12,14 +12,16 @@ form {
 .movie-info {
     width: 400px;
 }
-#search-box {
-    width: 30rem;
-}
 #review-box{
-    width: 25rem;
+ height: 8rem;
 }
-
-
+.comment-card{
+    display: flex;
+    width: 25rem; 
+}
+#search-result{
+    margin:20px;
+}
 #logger-welcome-icon {
     display: flex;
     height: 15rem;
@@ -43,11 +45,22 @@ form {
     background-color: #38A3A5;
     align-items: center;
 }
+.comment-card-body{
+    margin:15px;
+    display: flex;
+    width: 20rem;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: stretch;
+    justify-content: space-between;
+}
+.comment-spacer{
+    width: 15px;
+}
 #result-poster {
     display: flex;
     justify-content: center;
 }
-
 .card-body {
     margin: 4px;
     background-color: #38A3A5;
@@ -115,17 +128,3 @@ img{
     max-width: 100%;
     height: auto;
 }
-.video-container{
-    width: 100vw;
-    height: 100vh;
-    z-index: -3;
-  }
-      
-  iframe {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100vw;
-    height: 100vh;
-    transform: translate(-50%, -50%);
-  }

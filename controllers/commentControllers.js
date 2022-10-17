@@ -22,8 +22,9 @@ router.post("/:logId", (req, res) => {
     }
 
     Log.findById(logId)
-        .then(log => {
 
+        .then(log => {
+            console.log("here",req.body)
             log.comments.push(req.body)
             return log.save()
         })

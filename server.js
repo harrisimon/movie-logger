@@ -7,6 +7,7 @@ const middleware = require('./utils/middleware')
 const LogRouter = require('./controllers/logControllers')
 const CommentRouter = require('./controllers/commentControllers')
 const UserRouter = require('./controllers/user')
+const TrailerRouter = require('./controllers/trailerControllers')
 const User = require("./models/user")
 // SEE MORE DEPENDENCIES IN ./utils/middleware.js
 // user and resource routes linked in ./utils/middleware.js
@@ -15,9 +16,9 @@ const User = require("./models/user")
 // Middleware + App Object  //
 //////////////////////////////
 const app = require("liquid-express-views")(express())
-const bodyParser = require('body-parser')
-const jsonParser = bodyParser.json()
-const urlencodedParser = bodyParser.urlencoded({ extended: false })
+// const bodyParser = require('body-parser')
+// const jsonParser = bodyParser.json()
+// const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 middleware(app)
 
@@ -28,6 +29,7 @@ middleware(app)
 app.use('/auth', UserRouter)
 app.use('/logs', LogRouter)
 app.use('/comments', CommentRouter)
+app.use('/trailers', TrailerRouter)
 app.use(express.json());
 
 app.get('/', (req, res) => {
