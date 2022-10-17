@@ -46,6 +46,36 @@ As a user I want to be able to...
 ![screen9](/planning-docs/movie%20logger/movie%20logger.009.jpeg "screen9")
 ![screen10](/planning-docs/movie%20logger/movie%20logger.010.jpeg "screen10")
 
+### Restful Routes Logs
+| URL      | HTTP Verb | Action |
+| ----------- | ----------- |-----------|
+| /logs      | GET       | index       |
+| /mine   | GET        |show |
+| /new   | GET        |new |
+| /new/result   | POST        |show |
+| /logs   | POST        |create |
+| /logs/:id/edit   | GET        |edit |
+| /logs/:id   | PUT        |update |
+| /logs/:id   | GET        |show |
+| /logs/:id   | DELETE        |destroy |
+| /mine   | GET        |show |
+
+### Restful Routes Comments
+| URL      | HTTP Verb | Action |
+| ----------- | ----------- |-----------|
+| /:logId      | POST       | show       |
+| /delete/:logId /:commId     | DELETE       | destroy       |
+
+### Restful Routes Trailer
+| URL      | HTTP Verb | Action |
+| ----------- | ----------- |-----------|
+| /:logId      | POST       | show       |
+| /delete/:logId /:commId     | DELETE       | destroy       |
+
+### Unsolved Problems
+- Incorporating a more robust search, rather than just a simple exact title fetch.
+- Build out a full recommendation engine
+
 ### Schedule
 * Monday - pseudocode routes, figure out seed data / recommedation data / start recommendation logic
 * Tuesday - Establish schemas, start to write routes
