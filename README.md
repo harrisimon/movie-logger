@@ -69,8 +69,8 @@ As a user I want to be able to...
 ### Restful Routes Trailer
 | URL      | HTTP Verb | Action |
 | ----------- | ----------- |-----------|
-| /:logId      | POST       | show       |
-| /delete/:logId /:commId     | DELETE       | destroy       |
+| /trailers/:logId      | POST       | show       |
+
 
 ### Unsolved Problems
 - Incorporating a more robust search, rather than just a simple exact title fetch.
