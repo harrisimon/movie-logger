@@ -69,7 +69,7 @@ As a user I want to be able to...
 ### Restful Routes Trailer
 | URL      | HTTP Verb | Action |
 | ----------- | ----------- |-----------|
-| /trailers/:logId      | POST       | show       |
+| /trailers/:logId      | GET       | show       |
 
 
 ### Unsolved Problems
