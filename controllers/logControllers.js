@@ -82,27 +82,34 @@ router.post('/new/result', (req, res) => {
 	
 	axios(`http://www.omdbapi.com/?apikey=${process.env.API_KEY}4&t=${searchTitle}&plot=full`)
 	.then(result => {
-		const movieTitle = result.data.Title
-		const movieYear = result.data.Year
-		const movieRuntime = result.data.Runtime
-		const movieDirector = result.data.Director
-		const moviePlot = result.data.Plot
-		const movieGenre = result.data.Genre
-		const movieImdbId = result.data.imdbID
-		const moviePoster = result.data.Poster
-		console.log(result)
-		const movie = {
-			title: movieTitle,
-			year: movieYear,
-			runtime: movieRuntime,
-			director: movieDirector,
-			plot: moviePlot,
-			genre: movieGenre,
-			imdbId: movieImdbId,
-			poster: moviePoster,
+		// if (result.data.response == undefined){
+		// 	const error = "movie not found"
+		// 	console.log("hello")
+		// 	res.render('logs/new', { movie:error, username, loggedIn})
+		// } else {
 
-		}
-		res.render('logs/new', {movie: movie, username, loggedIn})
+			const movieTitle = result.data.Title
+			const movieYear = result.data.Year
+			const movieRuntime = result.data.Runtime
+			const movieDirector = result.data.Director
+			const moviePlot = result.data.Plot
+			const movieGenre = result.data.Genre
+			const movieImdbId = result.data.imdbID
+			const moviePoster = result.data.Poster
+			console.log(result.data.response)
+			const movie = {
+				title: movieTitle,
+				year: movieYear,
+				runtime: movieRuntime,
+				director: movieDirector,
+				plot: moviePlot,
+				genre: movieGenre,
+				imdbId: movieImdbId,
+				poster: moviePoster,
+	
+			}
+			res.render('logs/new', {movie: movie, username, loggedIn})
+		// }
 		// return movie
 	})
 

@@ -1,14 +1,22 @@
 {% layout 'layout.liquid' %}
 {% block content %}
+<br>
 <div class="container-sm">
     <form action="/logs/{{log.id}}?_method=PUT" method="POST">
 
-        <h2>
-            {{ log.movieTitle }} 
+            <div class="card sm-3" style="max-width: 60rem;">
+        <div class="row no-gutters">
+            
+            <div class="col-md-4" >
+                <img src="{{ log.poster}}" alt="a poster for the movie {{log.movieTitle}}" class="review-pic">
+            </div>
+            <div class="col-md-8">
+            <div class="card-body" id="movie-info-show">
 
-        </h2>
-           <img src="{{ log.poster}}" alt="a poster for the movie {{log.movieTitle}}">
-           {{ log.releaseYear }}
+                <h2 class="card-title">{{ log.movieTitle }}<h5>Directed by {{log.director}}</h5> <h6>{{ log.releaseYear }}</h6></h2>
+                <p class="card-text">{{log.plot}}</p>
+
+            </div>
         <fieldset>
                         <div class="input-group-prepend">
                             <span class="input-group-text">Review</span>

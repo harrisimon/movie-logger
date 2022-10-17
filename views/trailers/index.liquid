@@ -1,10 +1,17 @@
 {% layout "layout.liquid" %}
 {% block content %}
+ <br>
+<div class="trailer-box">
 
-<h1>hi</h1>
-<a href="https://www.youtube.com/watch?v={{key}}">Trailer</a>
 
-<iframe width="560" height="315"
+
+<br>
+<iframe width="1280" height="720"
 src="https://www.youtube.com/embed/{{key}}?&autoplay=1&rel=0&controls=0&modestbranding"frameborder="0" 
 allowfullscreen></iframe>
+<br>
+<button onclick="history.back()" class="btn btn-info" id="trailer-back">Back</button>
+</div>
+<a class="trailer-box" href="https://www.youtube.com/watch?v={{key}}"><small>Watch Trailer on Youtube</small></a>
+
 {% endblock %}

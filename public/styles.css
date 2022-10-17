@@ -104,7 +104,17 @@ form {
     font-weight:bolder;
     margin:12px;
 }
-
+.trailer-box{
+    display: flex;
+    justify-content: center;
+    margin:15px;
+    flex-direction: column;
+    align-items: center;
+}
+#trailer-back{
+    display: flex;
+    align-items: center;
+}
 .index-page {
     display: grid;
     column-gap: 30px;

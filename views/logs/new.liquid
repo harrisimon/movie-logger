@@ -16,6 +16,8 @@
         </form>
         {% if movie.title == null %}
             <h1>Enter a movie title to review</h1>
+        {%else if movie.data == null%}
+            <h1>Try another search</h1>
         {%else%}  
         <br>
     <div class="card sm-3" style="max-width: 60rem;">
