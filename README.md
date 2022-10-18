@@ -1,6 +1,9 @@
 # Project 2 Proposal
 ## Movie Logger
 
+## Link to active project
+https://movielogger.fly.dev/
+
 ### Overview 
 I plan to develop a movie logger app. The app will have a search which will access 'The Open Movie Database' https://www.omdbapi.com/.
 Once a user has found a movie, either by searching or suggestion they can log the movie and add a comment. Suggestions will be based off of either a random selection or subselection of movies from this dataset: https://www.kaggle.com/datasets/db55ac3dfd0098a0cf96dd542807f9253a16587ff233e06baef372bccfd09942?resource=download
