@@ -23,7 +23,7 @@ router.get('/:id', (req, res) => {
     }
 
     Log.findById(logId)
-        .then(log => {
+        .then(log => {// dry this up
             const username = req.session.username
             const loggedIn = req.session.loggedIn
             const userId = req.session.userId

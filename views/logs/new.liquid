@@ -3,8 +3,9 @@
 <div class="container-lg">
     <form id="seach-box" action="/logs/new/result" method="POST" class="input-group">
             <legend>Search for movie</legend>
+{%- comment -%} bad indentation  {%- endcomment -%}
+            <input  {%- comment -%} be consisitent! with your white space and putting things on 1 or multiple lines {%- endcomment -%}
 
-            <input
  
                 type="text" 
                 name="title" 
@@ -22,11 +23,11 @@
         <br>
     <div class="card sm-3" style="max-width: 60rem;">
         <div class="row no-gutters" id="search-results">
-            
+            {%- comment -%} inconsisitent wht space {%- endcomment -%}
             <div class="col-md-4" >
                 <img src="{{movie.poster}}" width="300" height="446" id="result-poster">
-                
-            </div>
+                {%- comment -%} inconsisitent wht space {%- endcomment -%}
+            </div>{%- comment -%} please be mindful of your indentation ! - i promise it will help in the future{%- endcomment -%}
             <div class="col-md-8">
             <div class="card-body" id="movie-info-show">
                    <h1 class="card-title">{{movie.title}}</h1>

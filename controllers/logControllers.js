@@ -30,12 +30,12 @@ router.use((req, res, next) => {
 router.get('/', (req, res) => {
 
 	Log.find({})
-		.populate("author", "username")
+		.populate("author", "username")// good use of populate
 		.then(logs => {
 
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
-		
+		// inconsistent white space 
 			
 			res.render('logs/index', { logs, username, loggedIn })
 		})
@@ -76,7 +76,7 @@ router.post('/new/result', (req, res) => {
 	
 	axios(`http://www.omdbapi.com/?apikey=${process.env.API_KEY}4&t=${searchTitle}&plot=full`)
 	.then(result => {
-
+			// could consolidate this block to be more dry 
 			const movieTitle = result.data.Title
 			const movieYear = result.data.Year
 			const movieRuntime = result.data.Runtime
@@ -97,7 +97,7 @@ router.post('/new/result', (req, res) => {
 				poster: moviePoster,
 	
 			}
-			res.render('logs/new', {movie: movie, username, loggedIn})
+			res.render('logs/new', {movie: movie, username, loggedIn}) // mixing short and long hand kvp assignment here, pick 1
 
 	})
 
@@ -109,10 +109,10 @@ router.post('/', (req, res) => {
 
 	req.body.author = req.session.userId
 
-	console.log("here",req.body)
+	console.log("here",req.body) // 'here' is not a descriptive log , good attempt 
 	Log.create(req.body)
 		.then(log => {
-			res.redirect('/logs')
+			res.redirect('/logs') // why not use render ? 
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -148,7 +148,7 @@ router.put('/:id', (req, res) => {
 
 	Log.findById(logId, req.body)
 		.then(log => {
-			return log.updateOne(req.body)
+			return log.updateOne(req.body) // good use of our built in mongoose document methods 
 		})
 		.then(()=> {
 			res.redirect(`/logs/${logId}`)
@@ -166,7 +166,7 @@ router.get('/:id', (req, res) => {
 		.populate("comments.author", "username")
 		.populate("author", "username")
 		.then(log => {
-            const {username, loggedIn, userId} = req.session
+            const {username, loggedIn, userId} = req.session // good use of destructuring 
 			console.log(log)
 			res.render('logs/show', { log, username, loggedIn, userId })
 		})
@@ -180,7 +180,7 @@ router.delete('/:id', (req, res) => {
 	const logId = req.params.id
 	Log.findByIdAndRemove(logId)
 		.then(log => {
-			res.redirect('/logs/mine')
+			res.redirect('/logs/mine') // why redirect when you can render ?
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)

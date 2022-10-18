@@ -34,21 +34,21 @@ router.post("/:logId", (req, res) => {
         .catch(err => res.redirect(`/error?error=${err}`))
 })
 
-
+// no update ? 
 // DELETE
 // only the author of the comment can delete it
 router.delete('/delete/:logId/:commId', (req, res) => {
     // isolate the ids and save to vars for easy ref
     const logId = req.params.logId 
     const commId = req.params.commId
-    // get the fruit
+    // get the fruit <-- what fruit ? 
     Log.findById(logId)
         .then(log => {
 
             const comment = log.comments.id(commId)
             console.log('this is the comment that was found', comment)
             // make sure the user is logged in
-            if (req.session.loggedIn) {
+            if (req.session.loggedIn) { // consolidate these 2 ifs with && since they return the same error
                 // only let the author of the comment delete it
                 if (comment.author == req.session.userId) {
                     comment.remove()

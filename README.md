@@ -35,7 +35,7 @@ As a user I want to be able to...
 * add comments to a movie I watched
 
 ### Entity Relationship Diagrams
-![ERD Diagram](/Movie%20logger%20ERD.drawio.png "erd diagram")
+![ERD Diagram](/Movie%20logger%20ERD.drawio.png "erd diagram")<!--  no ERD! -->
 
 ### Wireframes
 ![screen1](/planning-docs/movie%20logger/movie%20logger.001.jpeg "screen1")
