@@ -3,7 +3,6 @@
 // Import Dependencies
 const express = require('express')
 const axios = require('axios')
-// const Rec = require('../models/recommendation')
 const Log = require('../models/log')
 
 
@@ -12,14 +11,8 @@ const router = express.Router()
 
 
 
-/////////////////////////////
-/////// add routes for getting recommendation
-// based on genre
-/// look through db and random array
-
-// based on year
-/// look through db and random array
-
+// route to look up trailer based on logId
+// logId bring back imdbId which then uses the movie database API to find their id and then find trailer from their id
 router.get('/:id', (req, res) => {
     const logId = req.params.id
 
@@ -44,11 +37,10 @@ router.get('/:id', (req, res) => {
             const userId = req.session.userId
             axios(`https://api.themoviedb.org/3/find/${log}?api_key=a0900a4fc790e96b93869d26be959346&language=en-US&external_source=imdb_id`)
             .then(result => {
-                // console.log(result)
-                // res.render('trailers/index', {result, username, loggedIn, userId})
+
                 const tmdbId = result.data.movie_results[0].id
                 axios(`https://api.themoviedb.org/3/movie/${tmdbId}/videos?api_key=a0900a4fc790e96b93869d26be959346&language=en-US`)
-                // res.json(result.data.movie_results[0].id)
+
                     .then(result => {
                         console.log(result.data.results[0].key)
                         const key = result.data.results[0].key
@@ -67,36 +59,11 @@ router.get('/:id', (req, res) => {
         })
 
         
-    // axios(`https://api.themoviedb.org/3/find/${imdbId}?api_key=a0900a4fc790e96b93869d26be959346&language=en-US&external_source=imdb_id`)
-    //     .then(
-            
-    //         result => {
-    //             console.log(res.json(result))
-                
-    //         }
-        
-    //     )
+
 
 })
 
-// router.get('/trailers', (req, res) => {
-//     const logId = req.params.id
-//     Log.findById(logId)
-//     /// get tmdb id through tt is imdb id
-//         axios("https://api.themoviedb.org/3/find/tt5034838?api_key=a0900a4fc790e96b93869d26be959346&language=en-US&external_source=imdb_id")
 
-//     /// get movie results[0].id
-//         .then(
-//             axios()
-//         )
-// })
-
-
-
-/////////////////////////////
-/////// add routes for adding reccommendation to logs
-
-//// search using title to bring up form simlar to 
 
 
 

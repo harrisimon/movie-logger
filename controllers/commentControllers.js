@@ -44,9 +44,7 @@ router.delete('/delete/:logId/:commId', (req, res) => {
     // get the fruit
     Log.findById(logId)
         .then(log => {
-            // get the comment
-            // subdocs have a built in method that you can use to access specific subdocuments when you need to.
-            // this built in method is called .id()
+
             const comment = log.comments.id(commId)
             console.log('this is the comment that was found', comment)
             // make sure the user is logged in

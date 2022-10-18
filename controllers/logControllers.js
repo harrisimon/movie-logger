@@ -48,9 +48,7 @@ router.get('/', (req, res) => {
 router.get('/mine', (req, res) => {
     // destructure user info from req.session
     const { username, userId, loggedIn } = req.session
-	//////////////////////////////////////////////
-	// add axios to find movie data
-	// axios(`http://www.omdbapi.com/?apikey=764389f4&i=${log.imdbId}`)
+
 	Log.find({ author: userId })
 		.populate('author', 'username')
 		.then(logs => {
@@ -63,11 +61,7 @@ router.get('/mine', (req, res) => {
 
 // new route -> GET route that renders our page with the form
 router.get('/new', (req, res) => {
-	// axios('http://www.omdbapi.com/?apikey=764389f4&i=tt0114709')
-	// .then(result => {
-	// 	console.log(result.data)
-	// 	// res.json(result)
-	// })
+
 	const { username, userId, loggedIn } = req.session
 	res.render('logs/new', { username, loggedIn })
 
@@ -82,11 +76,6 @@ router.post('/new/result', (req, res) => {
 	
 	axios(`http://www.omdbapi.com/?apikey=${process.env.API_KEY}4&t=${searchTitle}&plot=full`)
 	.then(result => {
-		// if (result.data.response == undefined){
-		// 	const error = "movie not found"
-		// 	console.log("hello")
-		// 	res.render('logs/new', { movie:error, username, loggedIn})
-		// } else {
 
 			const movieTitle = result.data.Title
 			const movieYear = result.data.Year
@@ -109,8 +98,7 @@ router.post('/new/result', (req, res) => {
 	
 			}
 			res.render('logs/new', {movie: movie, username, loggedIn})
-		// }
-		// return movie
+
 	})
 
 })
@@ -118,7 +106,7 @@ router.post('/new/result', (req, res) => {
 // create -> POST route that actually calls the db and makes a new document
 // post the log with the comment
 router.post('/', (req, res) => {
-	// console.log("here", req.body)
+
 	req.body.author = req.session.userId
 
 	console.log("here",req.body)
@@ -173,8 +161,7 @@ router.put('/:id', (req, res) => {
 // show route
 router.get('/:id', (req, res) => {
 	const logId = req.params.id
-	//////////////////////////////////////////////
-	// add axios to find movie data
+
 	Log.findById(logId)
 		.populate("comments.author", "username")
 		.populate("author", "username")
