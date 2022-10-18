@@ -3,7 +3,7 @@
 <br>
 <div class="container-sm">
     <form action="/logs/{{log.id}}?_method=PUT" method="POST">
-
+        {%- comment -%} your indentation needs fixing all up in here, you'll find you have an un-paired/closed div{%- endcomment -%}
             <div class="card sm-3" style="max-width: 60rem;">
         <div class="row no-gutters">
             
@@ -17,7 +17,7 @@
                 <p class="card-text">{{log.plot}}</p>
 
             </div>
-        <fieldset>
+            <fieldset>
                         <div class="input-group-prepend">
                             <span class="input-group-text">Review</span>
                         </div>

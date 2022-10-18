@@ -54,7 +54,7 @@
         <div class="container-sm justify-content-center">
           <div class="col-md-8 col-lg-6">
             {% for comment in log.comments %}
-              {% render '../comment.liquid', comment: comment, userId: userId, log: log %}
+              {% render '../comment.liquid', comment: comment, userId: userId, log: log %}{%- comment -%} very nice use of mvc here {%- endcomment -%}
             {% endfor %}
           </div>
         </div>

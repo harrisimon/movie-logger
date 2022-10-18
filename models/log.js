@@ -1,6 +1,6 @@
 ////////////////////IMPORTS//////////////////
 const mongoose = require('./connection')
-const User = require('./user')
+const User = require('./user') // unused import
 const commentSchema = require('./comment')
 
 const {Schema, model} = mongoose
