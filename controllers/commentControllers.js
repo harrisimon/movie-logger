@@ -41,7 +41,7 @@ router.delete('/delete/:logId/:commId', (req, res) => {
     // isolate the ids and save to vars for easy ref
     const logId = req.params.logId 
     const commId = req.params.commId
-    // get the fruit
+
     Log.findById(logId)
         .then(log => {
 
